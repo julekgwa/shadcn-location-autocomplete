@@ -1,7 +1,6 @@
-# address-autocomplete
+# Shadcn Location Autocomplete
 
-This is a Tanstack Start application generated with
-[Create Fumadocs](https://github.com/fuma-nama/fumadocs).
+A provider-agnostic location autocomplete component built with Shadcn UI and Tailwind CSS.
 
 Run development server:
 

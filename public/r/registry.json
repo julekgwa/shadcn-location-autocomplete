@@ -1,0 +1,149 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "autocompletecn",
+  "homepage": "https://yourdomain.com/autocomplete",
+  "items": [
+    {
+      "name": "location-autocomplete",
+      "type": "registry:component",
+      "title": "Location Autocomplete",
+      "description": "Generic location autocomplete component for searching places and addresses. Accepts any provider via the fetchSuggestions prop. Supports client-side or server-side fetches.",
+      "dependencies": ["use-debounce"],
+      "registryDependencies": ["command"],
+      "files": [
+        {
+          "path": "src/components/ui/location-autocomplete.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "openstreetmap-provider",
+      "type": "registry:lib",
+      "title": "OpenStreetMap Provider",
+      "description": "Fetches place suggestions from OpenStreetMap Nominatim API. Returns results with display name, place ID, and raw API data. No API key is required.",
+      "files": [
+        {
+          "path": "src/lib/autocomplete/providers/openstreetmap.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/lib/autocomplete/api.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "mapbox-provider",
+      "type": "registry:lib",
+      "title": "Mapbox Provider",
+      "description": "Fetches location suggestions from Mapbox Geocoding API. Requires a Mapbox API key. Returns results with coordinates, place name, and full API response.",
+      "files": [
+        {
+          "path": "src/lib/autocomplete/providers/mapbox.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/lib/autocomplete/api.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "google-provider",
+      "type": "registry:lib",
+      "title": "Google Maps Provider",
+      "description": "Fetches place autocomplete suggestions using Google Places API. Requires a Google API key. Returns structured place information including formatted address and place ID.",
+      "files": [
+        {
+          "path": "src/lib/autocomplete/providers/google.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/lib/autocomplete/api.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "here-provider",
+      "type": "registry:lib",
+      "title": "HERE Maps Provider",
+      "description": "Fetches location suggestions using HERE Geocoding & Search API. Requires a HERE API key. Returns results with address, coordinates, and confidence score.",
+      "files": [
+        {
+          "path": "src/lib/autocomplete/providers/here.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/lib/autocomplete/api.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "geoapify-provider",
+      "type": "registry:lib",
+      "title": "Geoapify Provider",
+      "description": "Fetches location suggestions from Geoapify Places API. Requires a Geoapify API key. Provides detailed location data including city, country, and coordinates.",
+      "files": [
+        {
+          "path": "src/lib/autocomplete/providers/geoapify.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/lib/autocomplete/api.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "locationiq-provider",
+      "type": "registry:lib",
+      "title": "LocationIQ Provider",
+      "description": "Fetches location suggestions from LocationIQ API. Requires a LocationIQ API key. Returns place information with coordinates, display name, and structured address.",
+      "files": [
+        {
+          "path": "src/lib/autocomplete/providers/locationiq.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/lib/autocomplete/api.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "opencage-provider",
+      "type": "registry:lib",
+      "title": "OpenCage Provider",
+      "description": "Fetches location suggestions from OpenCage Geocoder API. Requires an OpenCage API key. Returns geocoding results with formatted address, coordinates, and components.",
+      "files": [
+        {
+          "path": "src/lib/autocomplete/providers/opencage.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/lib/autocomplete/api.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "tomtom-provider",
+      "type": "registry:lib",
+      "title": "TomTom Provider",
+      "description": "Fetches location suggestions from TomTom Search API. Requires a TomTom API key. Returns results with full address, position coordinates, and bounding box.",
+      "files": [
+        {
+          "path": "src/lib/autocomplete/providers/tomtom.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/lib/autocomplete/api.ts",
+          "type": "registry:lib"
+        }
+      ]
+    }
+  ]
+}
