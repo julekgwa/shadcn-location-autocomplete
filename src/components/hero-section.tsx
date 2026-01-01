@@ -1,32 +1,31 @@
-import { Link, useNavigate } from "@tanstack/react-router";
-import { ChevronRight } from "lucide-react";
-import React from "react";
-import { AnimatedGroup } from "@/components/ui/animated-group";
-import { Button } from "@/components/ui/button";
-import { TextEffect } from "@/components/ui/text-effect";
+import { Link, useNavigate } from '@tanstack/react-router'
+import { ChevronRight } from 'lucide-react'
+import { AnimatedGroup } from '@/components/ui/animated-group'
+import { Button } from '@/components/ui/button'
+import { TextEffect } from '@/components/ui/text-effect'
 
 const transitionVariants = {
   item: {
     hidden: {
       opacity: 0,
-      filter: "blur(12px)",
+      filter: 'blur(12px)',
       y: 12,
     },
     visible: {
       opacity: 1,
-      filter: "blur(0px)",
+      filter: 'blur(0px)',
       y: 0,
       transition: {
-        type: "spring",
+        type: 'spring',
         bounce: 0.3,
         duration: 1.5,
       },
     },
   },
-};
+}
 
 export default function HeroSection() {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
   return (
     <main className="overflow-hidden">
       <div
@@ -86,7 +85,7 @@ export default function HeroSection() {
                   <Button
                     size="lg"
                     className="rounded-xl px-5 text-base"
-                    render={<Link to={"/docs/$"} />}
+                    render={<Link to={'/docs/$'} />}
                     nativeButton={false}
                   >
                     <span className="text-nowrap">View Docs</span>
@@ -99,7 +98,7 @@ export default function HeroSection() {
                   className="h-10.5 rounded-xl px-5 text-base"
                   onClick={() =>
                     navigate({
-                      href: "https://github.com/julekgwa/shadcn-location-autocomplete",
+                      href: 'https://github.com/julekgwa/shadcn-location-autocomplete',
                     })
                   }
                   nativeButton={false}
@@ -128,15 +127,15 @@ export default function HeroSection() {
                   className="bg-background aspect-15/8 relative hidden rounded-2xl dark:block"
                   src="/providers-dark.png"
                   alt="app screen"
-                  width="2700"
-                  height="1440"
+                  width="1458"
+                  height="638"
                 />
                 <img
                   className="z-2 border-border/25 aspect-15/8 relative rounded-2xl border dark:hidden"
                   src="/providers-light.png"
                   alt="app screen"
-                  width="2700"
-                  height="1440"
+                  width="1458"
+                  height="638"
                 />
               </div>
             </div>
@@ -158,5 +157,5 @@ export default function HeroSection() {
         </div>
       </section>
     </main>
-  );
+  )
 }

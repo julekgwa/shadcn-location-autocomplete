@@ -1,7 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry.json",
-  "name": "autocompletecn",
-  "homepage": "https://yourdomain.com/autocomplete",
+  "name": "locn-autocomplete",
+  "homepage": "https://locn.juniusl.space/r/location-autocomplete.json",
   "items": [
     {
       "name": "location-autocomplete",

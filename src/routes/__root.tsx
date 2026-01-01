@@ -6,7 +6,8 @@ import {
 } from "@tanstack/react-router";
 import { RootProvider } from "fumadocs-ui/provider/tanstack";
 import type * as React from "react";
-import appCss from "@/styles/app.css?url";
+
+import appCss from "@/styles.css?url";
 
 export const Route = createRootRoute({
   head: () => ({
@@ -71,7 +72,6 @@ function RootDocument({ children }: { children: React.ReactNode }) {
     <html lang={"en"} suppressHydrationWarning>
       <head>
         <HeadContent />
-        <title>Shadcn Location Autocomplete</title>
       </head>
       <body className="flex flex-col min-h-screen">
         <RootProvider>{children}</RootProvider>

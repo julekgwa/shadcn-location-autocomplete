@@ -1,29 +1,33 @@
-import { cloudflare } from "@cloudflare/vite-plugin";
-import tailwindcss from "@tailwindcss/vite";
-import { tanstackStart } from "@tanstack/react-start/plugin/vite";
-import react from "@vitejs/plugin-react";
-import mdx from "fumadocs-mdx/vite";
-import { defineConfig } from "vite";
-import tsConfigPaths from "vite-tsconfig-paths";
+import { defineConfig } from 'vite'
+import { devtools } from '@tanstack/devtools-vite'
+import { tanstackStart } from '@tanstack/react-start/plugin/vite'
+import viteReact from '@vitejs/plugin-react'
+import viteTsConfigPaths from 'vite-tsconfig-paths'
+import mdx from 'fumadocs-mdx/vite'
+import tailwindcss from '@tailwindcss/vite'
+import { cloudflare } from '@cloudflare/vite-plugin'
+import * as MdxConfig from './source.config'
 
-export default defineConfig({
+const config = defineConfig({
   server: {
-    port: 3000,
+    open: true,
   },
   plugins: [
-    mdx(await import("./source.config")),
-    cloudflare({ viteEnvironment: { name: "ssr" } }),
-    tailwindcss(),
-    tsConfigPaths({
-      projects: ["./tsconfig.json"],
+    mdx(MdxConfig),
+    devtools(),
+    cloudflare({ viteEnvironment: { name: 'ssr' } }),
+    // this is the plugin that enables path aliases
+    viteTsConfigPaths({
+      projects: ['./tsconfig.json'],
     }),
-    tanstackStart({
-      prerender: {
-        enabled: true,
+    tailwindcss(),
+    tanstackStart(),
+    viteReact({
+      babel: {
+        plugins: ['babel-plugin-react-compiler'],
       },
     }),
-    react(),
-    // see https://tanstack.com/start/latest/docs/framework/react/guide/hosting for hosting config
-    // we configured nitro by default
   ],
-});
+})
+
+export default config

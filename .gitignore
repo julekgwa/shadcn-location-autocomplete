@@ -18,3 +18,10 @@ node_modules
 .source
 .dist
 .wrangler
+dist
+dist-ssr
+*.local
+count.txt
+.env
+.vinxi
+todos.json

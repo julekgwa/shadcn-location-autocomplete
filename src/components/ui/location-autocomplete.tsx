@@ -1,6 +1,6 @@
-import { cva } from "class-variance-authority";
-import React from "react";
-import { useDebouncedCallback } from "use-debounce";
+import { cva } from 'class-variance-authority'
+import React from 'react'
+import { useDebouncedCallback } from 'use-debounce'
 import {
   Command,
   CommandEmpty,
@@ -8,33 +8,33 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from "@/components/ui/command";
+} from '@/components/ui/command'
 
-const commandVariants = cva("**:data-[slot=command-input-wrapper]:px-0", {
+const commandVariants = cva('**:data-[slot=command-input-wrapper]:px-0', {
   variants: {
     variant: {
       default:
-        "border-input/30 border-2 px-0 **:data-[slot=input-group]:border-0 bg-popover **:data-[slot=input-group]:bg-popover! **:data-[slot=command-input-wrapper]:border-b",
+        'border-input/30 border-2 px-0 **:data-[slot=input-group]:border-0 bg-popover **:data-[slot=input-group]:bg-popover! **:data-[slot=command-input-wrapper]:border-b',
       detached:
-        "**:data-[slot=command-group]:bg-muted **:data-[slot=command-group]:rounded-lg space-y-2",
+        '**:data-[slot=command-group]:bg-muted **:data-[slot=command-group]:rounded-lg space-y-2',
     },
   },
   defaultVariants: {
-    variant: "default",
+    variant: 'default',
   },
-});
+})
 
-const commandItemVariants = cva("cursor-pointer", {
+const commandItemVariants = cva('cursor-pointer', {
   variants: {
     variant: {
-      default: "bg-popover! hover:bg-muted!",
-      detached: "hover:bg-input!",
+      default: 'bg-popover! hover:bg-muted!',
+      detached: 'hover:bg-input!',
     },
   },
   defaultVariants: {
-    variant: "default",
+    variant: 'default',
   },
-});
+})
 
 /**
  * Configuration options for a location provider or API service.
@@ -55,18 +55,18 @@ const commandItemVariants = cva("cursor-pointer", {
  * }
  */
 export interface ProviderConfig {
-  apiKey?: string;
-  baseUrl?: string;
+  apiKey?: string
+  baseUrl?: string
 }
 
 export interface LocationSuggestion<Raw = unknown> {
-  place_id: string;
-  display_name: string;
-  lat: string;
-  lon: string;
-  type: string;
-  importance: number;
-  raw?: Raw;
+  place_id: string
+  display_name: string
+  lat: string
+  lon: string
+  type: string
+  importance: number
+  raw?: Raw
 }
 
 /**
@@ -82,12 +82,12 @@ interface LocationAutocompleteProps<Raw = unknown> {
    * The current value of the input field.
    * Typically, a string representing what the user has typed.
    */
-  value: string;
+  value: string
   /**
    * Callback fired when the input value changes.
    * @param value - The updated input string
    */
-  onQueryChange: (value: string) => void;
+  onQueryChange: (value: string) => void
   /**
    * Function to fetch location suggestions from a backend.
    * Should return a Promise resolving to an array of `LocationSuggestion<Raw>`.
@@ -99,7 +99,7 @@ interface LocationAutocompleteProps<Raw = unknown> {
    *   const results = await fetchSuggestions(query)
    *   results.map(location => location.display_name)
    */
-  fetchSuggestions: (query: string) => Promise<LocationSuggestion<Raw>[]>;
+  fetchSuggestions: (query: string) => Promise<Array<LocationSuggestion<Raw>>>
   /**
    * Callback fired when the user selects a suggestion.
    *
@@ -108,64 +108,64 @@ interface LocationAutocompleteProps<Raw = unknown> {
    *
    * @param location - The selected suggestion
    */
-  onSelect: (location: LocationSuggestion<Raw>) => void;
+  onSelect: (location: LocationSuggestion<Raw>) => void
   /**
    * Controls the UX styling of the component.
    *
    * - "default": The input and results are visually connected; main container has border.
    * - "detached": Results are separated from the input; input container may have border; main container background may differ.
    */
-  variant?: "default" | "detached";
+  variant?: 'default' | 'detached'
   /**
    * Debounce delay in milliseconds before calling `fetchSuggestions`.
    * Defaults to 300ms if not provided.
    */
-  debounceMs?: number;
+  debounceMs?: number
   /**
    * Optional error handler for fetch failures.
    * @param error
    */
-  onError?: (error: Error) => void;
+  onError?: (error: Error) => void
   /**
    * Placeholder text for the input field
    * @default "Search for a location..."
    */
-  placeholder?: string;
+  placeholder?: string
 }
 
 function LocationAutocomplete<Raw = unknown>({
-  variant = "default",
-  value = "",
+  variant = 'default',
+  value = '',
   onQueryChange,
   onSelect,
   fetchSuggestions,
   debounceMs = 300,
   onError,
-  placeholder = "Search for a location...",
+  placeholder = 'Search for a location...',
 }: LocationAutocompleteProps<Raw>) {
-  const [items, setItems] = React.useState<LocationSuggestion<Raw>[]>([]);
-  const [open, setOpen] = React.useState(false);
-  const [isLoading, setIsLoading] = React.useState(false);
+  const [items, setItems] = React.useState<Array<LocationSuggestion<Raw>>>([])
+  const [open, setOpen] = React.useState(false)
+  const [isLoading, setIsLoading] = React.useState(false)
 
   const debounced = useDebouncedCallback(async (value) => {
     try {
-      setIsLoading(true);
-      const results = await fetchSuggestions(value);
-      setItems(results);
+      setIsLoading(true)
+      const results = await fetchSuggestions(value)
+      setItems(results)
     } catch (error) {
-      onError?.(error as Error);
+      onError?.(error as Error)
     } finally {
-      setIsLoading(false);
+      setIsLoading(false)
     }
-  }, debounceMs);
+  }, debounceMs)
 
   return (
     <Command shouldFilter={false} className={commandVariants({ variant })}>
       <CommandInput
         onValueChange={(value) => {
-          onQueryChange?.(value);
-          setOpen(true);
-          debounced(value);
+          onQueryChange?.(value)
+          setOpen(true)
+          debounced(value)
         }}
         value={value}
         placeholder={placeholder}
@@ -180,12 +180,12 @@ function LocationAutocomplete<Raw = unknown>({
                   key={item.place_id}
                   className={commandItemVariants({ variant })}
                   onSelect={() => {
-                    onQueryChange?.(item.display_name);
-                    onSelect(item);
-                    setOpen(false);
+                    onQueryChange?.(item.display_name)
+                    onSelect(item)
+                    setOpen(false)
                   }}
                 >
-                  {item.display_name || "Unnamed location"}
+                  {item.display_name || 'Unnamed location'}
                 </CommandItem>
               ))}
             </CommandGroup>
@@ -193,8 +193,8 @@ function LocationAutocomplete<Raw = unknown>({
         </CommandList>
       )}
     </Command>
-  );
+  )
 }
 
-export { LocationAutocomplete };
-export type { LocationAutocompleteProps };
+export { LocationAutocomplete }
+export type { LocationAutocompleteProps }
