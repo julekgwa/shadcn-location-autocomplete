@@ -2,6 +2,7 @@
   "name": "shadcn-location-autocomplete",
   "private": true,
   "type": "module",
+  "homepage": "https://locn.juniusl.space",
   "scripts": {
     "dev": "vite dev --port 3000",
     "build": "vite build",

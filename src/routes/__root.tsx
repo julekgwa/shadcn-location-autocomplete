@@ -1,9 +1,11 @@
+import { TanStackDevtools } from "@tanstack/react-devtools";
 import {
   createRootRoute,
   HeadContent,
   Outlet,
   Scripts,
 } from "@tanstack/react-router";
+import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 import { RootProvider } from "fumadocs-ui/provider/tanstack";
 import type * as React from "react";
 
@@ -26,6 +28,76 @@ export const Route = createRootRoute({
         name: "description",
         content:
           "A provider-agnostic location autocomplete component built with Shadcn UI and Tailwind CSS.",
+      },
+      {
+        property: "og:title",
+        content: "Shadcn Location Autocomplete",
+      },
+      {
+        property: "og:description",
+        content:
+          "A provider-agnostic location autocomplete component built with Shadcn UI and Tailwind CSS.",
+      },
+      {
+        property: "og:image",
+        content: "/og-facebook.webp",
+      },
+      {
+        property: "og:image",
+        content: "/og-linkedin.webp",
+      },
+      {
+        property: "og:image",
+        content: "/og-mastodon.webp",
+      },
+      {
+        property: "og:image",
+        content: "/og-bluesky.webp",
+      },
+      {
+        property: "og:image",
+        content: "/og-slack.webp",
+      },
+      {
+        property: "og:image",
+        content: "/og-discord.webp",
+      },
+      {
+        property: "og:image",
+        content: "/og-0.webp",
+      },
+      {
+        property: "og:image:alt",
+        content: "Shadcn Location Autocomplete",
+      },
+      {
+        property: "og:url",
+        content: `https://locn.juniusl.space${location.pathname === "/" ? "" : location.pathname}`,
+      },
+      {
+        name: "twitter:url",
+        content: `https://locn.juniusl.space${location.pathname === "/" ? "" : location.pathname}`,
+      },
+      {
+        property: "og:type",
+        content: "website",
+      },
+      {
+        name: "twitter:card",
+        content: "summary_large_image",
+      },
+      {
+        name: "twitter:title",
+        content: "Shadcn Location Autocomplete",
+      },
+      {
+        name: "twitter:description",
+        content:
+          "A provider-agnostic location autocomplete component built with Shadcn UI and Tailwind CSS.",
+      },
+      {
+        name: "twitter:image",
+        content: "/og-twitter.webp",
       },
     ],
     links: [
@@ -75,6 +147,17 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       </head>
       <body className="flex flex-col min-h-screen">
         <RootProvider>{children}</RootProvider>
+        <TanStackDevtools
+          config={{
+            position: "bottom-right",
+          }}
+          plugins={[
+            {
+              name: "Tanstack Router",
+              render: <TanStackRouterDevtoolsPanel />,
+            },
+          ]}
+        />
         <Scripts />
       </body>
     </html>

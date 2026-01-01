@@ -47,7 +47,7 @@ export default function HeroSection() {
                 as="h1"
                 className="mt-8 max-w-2xl text-balance text-5xl font-medium md:text-6xl lg:mt-16"
               >
-                Shadcn Location Autocomplete Component
+                Shadcn location autocomplete component
               </TextEffect>
               <TextEffect
                 per="line"
@@ -134,8 +134,8 @@ export default function HeroSection() {
                   <img
                     src="/providers-dark.webp"
                     alt="app screen dark"
-                    width="584"
-                    height="256"
+                    width="1458"
+                    height="638"
                     className="bg-background w-full  aspect-15/8 relative hidden rounded-2xl dark:block"
                   />
                 </picture>

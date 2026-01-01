@@ -4,12 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="46ea2f3b-f925-4bdd-b1ba-3d564aa17459" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/robots.txt" beforeDir="false" afterPath="$PROJECT_DIR$/public/robots.txt" afterDir="false" />
+    <list default="true" id="46ea2f3b-f925-4bdd-b1ba-3d564aa17459" name="Changes" comment="refactor: standardize import statements and improve code formatting">
+      <change afterPath="$PROJECT_DIR$/public/og_image.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/social-images.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/providers-dark.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/providers-dark@2x.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/providers-light.webp" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/hero-section.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/hero-section.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ui/animated-group.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/animated-group.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vite.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/vite.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/__root.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/__root.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/docs/$.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/docs/$.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/index.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,12 +79,25 @@
       <option name="presentableId" value="Default" />
       <updated>1767267937675</updated>
       <workItem from="1767267938870" duration="6619000" />
-      <workItem from="1767287766569" duration="2041000" />
+      <workItem from="1767287766569" duration="8056000" />
     </task>
+    <task id="LOCAL-00001" summary="refactor: standardize import statements and improve code formatting">
+      <option name="closed" value="true" />
+      <created>1767289885727</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1767289885731</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="refactor: standardize import statements and improve code formatting" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor: standardize import statements and improve code formatting" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>
