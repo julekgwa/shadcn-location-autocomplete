@@ -151,9 +151,9 @@ export default function HeroSection() {
                   <img
                     src="/providers-light.webp"
                     alt="app screen light"
-                    width="584"
-                    height="256"
-                    className="z-2 border-border/25 aspect-15/8 relative rounded-2xl border dark:hidden"
+                    width="1458"
+                    height="638"
+                    className="z-2 border-border/25 w-full aspect-15/8 relative rounded-2xl border dark:hidden"
                   />
                 </picture>
               </div>
