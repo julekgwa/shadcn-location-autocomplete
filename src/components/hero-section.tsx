@@ -1,31 +1,31 @@
-import { Link, useNavigate } from '@tanstack/react-router'
-import { ChevronRight } from 'lucide-react'
-import { AnimatedGroup } from '@/components/ui/animated-group'
-import { Button } from '@/components/ui/button'
-import { TextEffect } from '@/components/ui/text-effect'
+import { Link, useNavigate } from "@tanstack/react-router";
+import { ChevronRight } from "lucide-react";
+import { AnimatedGroup } from "@/components/ui/animated-group";
+import { Button } from "@/components/ui/button";
+import { TextEffect } from "@/components/ui/text-effect";
 
 const transitionVariants = {
   item: {
     hidden: {
       opacity: 0,
-      filter: 'blur(12px)',
+      filter: "blur(12px)",
       y: 12,
     },
     visible: {
       opacity: 1,
-      filter: 'blur(0px)',
+      filter: "blur(0px)",
       y: 0,
       transition: {
-        type: 'spring',
+        type: "spring" as const,
         bounce: 0.3,
         duration: 1.5,
       },
     },
   },
-}
+};
 
 export default function HeroSection() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   return (
     <main className="overflow-hidden">
       <div
@@ -85,7 +85,7 @@ export default function HeroSection() {
                   <Button
                     size="lg"
                     className="rounded-xl px-5 text-base"
-                    render={<Link to={'/docs/$'} />}
+                    render={<Link to={"/docs/$"} />}
                     nativeButton={false}
                   >
                     <span className="text-nowrap">View Docs</span>
@@ -98,7 +98,7 @@ export default function HeroSection() {
                   className="h-10.5 rounded-xl px-5 text-base"
                   onClick={() =>
                     navigate({
-                      href: 'https://github.com/julekgwa/shadcn-location-autocomplete',
+                      href: "https://github.com/julekgwa/shadcn-location-autocomplete",
                     })
                   }
                   nativeButton={false}
@@ -121,22 +121,41 @@ export default function HeroSection() {
               ...transitionVariants,
             }}
           >
-            <div className="mask-b-from-55% relative -mr-56 mt-8 overflow-hidden px-2 sm:mr-0 sm:mt-12 md:mt-20">
-              <div className="inset-shadow-2xs ring-background dark:inset-shadow-white/20 bg-background relative mx-auto max-w-5xl overflow-hidden rounded-2xl border p-4 shadow-lg shadow-zinc-950/15 ring-1">
-                <img
-                  className="bg-background aspect-15/8 relative hidden rounded-2xl dark:block"
-                  src="/providers-dark.png"
-                  alt="app screen"
-                  width="1458"
-                  height="638"
-                />
-                <img
-                  className="z-2 border-border/25 aspect-15/8 relative rounded-2xl border dark:hidden"
-                  src="/providers-light.png"
-                  alt="app screen"
-                  width="1458"
-                  height="638"
-                />
+            <div className="mask-b-from-55% relative -mr-56 mt-8 overflow-hidden w-full px-2 sm:mr-0 sm:mt-12 md:mt-20">
+              <div className="inset-shadow-2xs ring-background dark:inset-shadow-white/20 bg-background relative w-full mx-auto max-w-5xl overflow-hidden rounded-2xl border p-4 shadow-lg shadow-zinc-950/15 ring-1">
+                <picture>
+                  {/* Dark mode */}
+                  <source
+                    type="image/webp"
+                    srcSet="/providers-dark.webp 584w, /providers-dark@2x.webp 1168w"
+                    sizes="(max-width: 640px) 100vw, 584px"
+                    className="hidden dark:block"
+                  />
+                  <img
+                    src="/providers-dark.webp"
+                    alt="app screen dark"
+                    width="584"
+                    height="256"
+                    className="bg-background w-full  aspect-15/8 relative hidden rounded-2xl dark:block"
+                  />
+                </picture>
+
+                <picture>
+                  {/* Light mode */}
+                  <source
+                    type="image/webp"
+                    srcSet="/providers-light.webp 584w, /providers-light@2x.webp 1168w"
+                    sizes="(max-width: 640px) 100vw, 584px"
+                    className="dark:hidden"
+                  />
+                  <img
+                    src="/providers-light.webp"
+                    alt="app screen light"
+                    width="584"
+                    height="256"
+                    className="z-2 border-border/25 aspect-15/8 relative rounded-2xl border dark:hidden"
+                  />
+                </picture>
               </div>
             </div>
           </AnimatedGroup>
@@ -157,5 +176,5 @@ export default function HeroSection() {
         </div>
       </section>
     </main>
-  )
+  );
 }
