@@ -1,0 +1,93 @@
+"use client";
+
+import {Button} from "@/components/ui/button";
+import {
+	Empty,
+	EmptyContent,
+	EmptyDescription,
+	EmptyHeader,
+	EmptyTitle,
+} from "@/components/ui/empty";
+import {Compass, Home} from "lucide-react";
+import {motion} from "motion/react";
+import {Link} from "@tanstack/react-router";
+
+const PRIMARY_ORB_HORIZONTAL_OFFSET = 40;
+const PRIMARY_ORB_VERTICAL_OFFSET = 20;
+
+export function NotFoundPage() {
+	return (
+		<div
+			className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-[radial-gradient(circle_at_center,rgba(99,102,241,0.1),transparent_70%)] text-[var(--foreground)]">
+			<div
+				aria-hidden={true}
+				className="-z-10 absolute inset-0 overflow-hidden"
+			>
+				<motion.div
+					animate={{
+						x: [
+							0,
+							PRIMARY_ORB_HORIZONTAL_OFFSET,
+							-PRIMARY_ORB_HORIZONTAL_OFFSET,
+							0,
+						],
+						y: [
+							0,
+							PRIMARY_ORB_VERTICAL_OFFSET,
+							-PRIMARY_ORB_VERTICAL_OFFSET,
+							0,
+						],
+						rotate: [0, 10, -10, 0],
+					}}
+					className="absolute top-1/2 left-1/3 size-90 rounded-full bg-linear-to-tr from-purple-500/20 to-blue-500/20 blur-3xl"
+					transition={{
+						repeat: Number.POSITIVE_INFINITY,
+						duration: 4,
+						ease: "easeInOut",
+					}}
+				/>
+				<motion.div
+					animate={{
+						x: [
+							0,
+							-PRIMARY_ORB_HORIZONTAL_OFFSET,
+							PRIMARY_ORB_HORIZONTAL_OFFSET,
+							0,
+						],
+						y: [
+							0,
+							-PRIMARY_ORB_VERTICAL_OFFSET,
+							PRIMARY_ORB_VERTICAL_OFFSET,
+							0,
+						],
+					}}
+					className="absolute right-1/4 bottom-1/3 size-120 rounded-full bg-linear-to-br from-indigo-400/10 to-pink-400/10 blur-3xl"
+					transition={{
+						repeat: Number.POSITIVE_INFINITY,
+						duration: 4,
+						ease: "easeInOut",
+					}}
+				/>
+			</div>
+
+			<Empty>
+				<EmptyHeader>
+					<EmptyTitle className="font-extrabold text-8xl">404</EmptyTitle>
+					<EmptyDescription className="text-nowrap">
+						The page you're looking for might have been <br/>
+						moved or doesn't exist.
+					</EmptyDescription>
+				</EmptyHeader>
+				<EmptyContent>
+					<div className="flex gap-2">
+						<Button render={<Link to={'/'}/>} nativeButton={false}><Home/>Go Home
+						</Button>
+
+						<Button variant="outline" render={<Link to={'/docs/$'}/>} nativeButton={false}><Compass/>Explore
+						</Button>
+					</div>
+				</EmptyContent>
+			</Empty>
+		</div>
+	);
+}

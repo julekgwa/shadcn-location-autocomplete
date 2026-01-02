@@ -10,11 +10,13 @@ import {RootProvider} from "fumadocs-ui/provider/tanstack";
 import type * as React from "react";
 
 import appCss from "@/styles.css?url";
+import {NotFoundPage} from "@/components/not-found";
+import {ErrorPage} from "@/components/error-page";
 
 export const Route = createRootRoute({
-	head: ({matches}) => {
+	head: ({ matches }) => {
 
-		const route =  matches.find(
+		const route = matches.find(
 			(route) => route.routeId !== "__root__"
 		)
 
@@ -151,6 +153,8 @@ export const Route = createRootRoute({
 		}
 	},
 	component: RootComponent,
+	notFoundComponent: NotFoundPage,
+	errorComponent: ErrorPage
 });
 
 function RootComponent() {
