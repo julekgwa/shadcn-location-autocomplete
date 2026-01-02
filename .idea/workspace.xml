@@ -4,12 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="46ea2f3b-f925-4bdd-b1ba-3d564aa17459" name="Changes" comment="feat: enhance Shadcn Location Autocomplete with improved SEO metadata and social media image generation">
-      <change afterPath="$PROJECT_DIR$/public/gtag.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/__root.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/__root.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/docs/$.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/docs/$.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/index.tsx" afterDir="false" />
+    <list default="true" id="46ea2f3b-f925-4bdd-b1ba-3d564aa17459" name="Changes" comment="feat: add Google Analytics tracking scripts and gtag.js for improved analytics">
+      <change afterPath="$PROJECT_DIR$/public/microsoft-clarity.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +80,7 @@
       <workItem from="1767267938870" duration="6619000" />
       <workItem from="1767287766569" duration="9020000" />
       <workItem from="1767298552861" duration="24000" />
-      <workItem from="1767337874255" duration="1126000" />
+      <workItem from="1767337874255" duration="1982000" />
     </task>
     <task id="LOCAL-00001" summary="refactor: standardize import statements and improve code formatting">
       <option name="closed" value="true" />
@@ -102,7 +98,15 @@
       <option name="project" value="LOCAL" />
       <updated>1767296428419</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="feat: add Google Analytics tracking scripts and gtag.js for improved analytics">
+      <option name="closed" value="true" />
+      <created>1767340559732</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1767340559732</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -111,7 +115,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="refactor: standardize import statements and improve code formatting" />
     <MESSAGE value="feat: enhance Shadcn Location Autocomplete with improved SEO metadata and social media image generation" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: enhance Shadcn Location Autocomplete with improved SEO metadata and social media image generation" />
+    <MESSAGE value="feat: add Google Analytics tracking scripts and gtag.js for improved analytics" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: add Google Analytics tracking scripts and gtag.js for improved analytics" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>

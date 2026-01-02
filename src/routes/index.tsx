@@ -81,6 +81,11 @@ export const Route = createFileRoute("/")({
       {
         src: "/gtag.js",
         async: true,
+      },
+      {
+        //   microsoft Clarity tracking script
+        src: '/clarity.js',
+        async: true,
       }
     ],
   }),

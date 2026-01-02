@@ -135,6 +135,11 @@ export const Route = createRootRoute({
       {
         src: "/gtag.js",
         async: true,
+      },
+      {
+        //   microsoft Clarity tracking script
+        src: '/clarity.js',
+        async: true,
       }
     ],
   }),
