@@ -73,6 +73,16 @@ export const Route = createFileRoute("/")({
         content: "/og-twitter.webp",
       },
     ],
+    scripts: [
+      {
+        src: "https://www.googletagmanager.com/gtag/js?id=G-HS8MSXE8ZL",
+        async: true,
+      },
+      {
+        src: "/gtag.js",
+        async: true,
+      }
+    ],
   }),
   component: Home,
 });
