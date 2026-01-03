@@ -156,12 +156,14 @@ export const normalizeMapboxResult = <T extends MapboxSuggestion>(
   item: T,
 ): LocationSuggestion<T> => ({
   place_id: item.mapbox_id || Math.random().toString(),
-  display_name: item.place_formatted || item.address || "Unknown location",
+  formattedAddress: item.full_address || item.address || "Unknown location",
   lat: "0",
   lon: "0",
   type: item.feature_type || "unknown",
   importance: 0.5,
   raw: item,
+  label: item.address || item.name,
+  addressInfo: item.place_formatted || "",
 });
 
 export async function fetchMapboxSuggestions(

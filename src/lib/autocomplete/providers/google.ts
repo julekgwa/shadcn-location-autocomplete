@@ -138,7 +138,7 @@ export const normalizeGoogleResult = <T extends GooglePlaceSuggestion>(
 ): LocationSuggestion<T> => {
   return {
     place_id: item.placePrediction.placeId || Math.random().toString(),
-    display_name:
+    formattedAddress:
       item.placePrediction.text?.text ||
       item.placePrediction.structuredFormat?.mainText?.text ||
       "Unknown location",
@@ -147,6 +147,9 @@ export const normalizeGoogleResult = <T extends GooglePlaceSuggestion>(
     type: (item.placePrediction.types ?? []).join(",") || "unknown",
     importance: 0.5,
     raw: item,
+    label:item.placePrediction.structuredFormat?.mainText?.text || '',
+    addressInfo:
+      item.placePrediction.structuredFormat?.secondaryText?.text || "",
   };
 };
 

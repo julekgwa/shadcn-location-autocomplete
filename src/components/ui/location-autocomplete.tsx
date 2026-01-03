@@ -60,13 +60,60 @@ export interface ProviderConfig {
 }
 
 export interface LocationSuggestion<Raw = unknown> {
-  place_id: string
-  display_name: string
-  lat: string
-  lon: string
-  type: string
-  importance: number
-  raw?: Raw
+  /**
+   * Unique identifier for the location.
+   * Usually comes from the provider (e.g., OpenStreetMap `place_id`, Google `place_id`).
+   * Should be unique across all suggestions.
+   */
+  place_id: string;
+
+  /**
+   * Primary label shown in the UI (e.g., street name, point of interest, or place name).
+   * This is the main text rendered in the autocomplete suggestion list.
+   */
+  label: string;
+
+  /**
+   * Secondary address context (optional).
+   * Typically contains city, state, country, or other contextual info.
+   * Displayed below the `label` in a smaller or muted font.
+   */
+  addressInfo?: string;
+
+  /**
+   * Full provider-formatted address.
+   * The canonical string returned by the geocoding provider.
+   * Can be used as a fallback if `label` or `addressInfo` are not available,
+   * or for copy/paste, analytics, and logging.
+   */
+  formattedAddress: string;
+
+  /** Latitude coordinate of the location. */
+  lat: string;
+
+  /** Longitude coordinate of the location. */
+  lon: string;
+
+  /**
+   * Type of the location.
+   * Example values: "address", "poi", "city", "suburb".
+   * Useful for filtering or custom rendering in your autocomplete component.
+   */
+  type: string;
+
+  /**
+   * Importance score of the location.
+   * Provided by the geocoding service to indicate relevance.
+   * Can be used to sort or prioritize suggestions.
+   */
+  importance: number;
+
+  /**
+   * Optional raw provider response.
+   * Allows consumers to access any provider-specific fields not mapped to standard props.
+   * Useful if additional metadata or details are needed.
+   */
+  raw?: Raw;
 }
 
 /**
@@ -180,12 +227,12 @@ function LocationAutocomplete<Raw = unknown>({
                   key={item.place_id}
                   className={commandItemVariants({ variant })}
                   onSelect={() => {
-                    onQueryChange?.(item.display_name)
+                    onQueryChange?.(item.formattedAddress)
                     onSelect(item)
                     setOpen(false)
                   }}
                 >
-                  {item.display_name || 'Unnamed location'}
+                  {item.label || 'Unnamed location'}
                 </CommandItem>
               ))}
             </CommandGroup>

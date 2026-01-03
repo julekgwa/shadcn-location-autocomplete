@@ -99,12 +99,14 @@ export const normalizeOpenCageResult = <T extends OpenCageResult>(
   item: T,
 ): LocationSuggestion<T> => ({
   place_id: Math.random().toString(),
-  display_name: item.formatted || "Unknown location",
+  formattedAddress: item.formatted || "Unknown location",
   lat: item.geometry?.lat?.toString() || "0",
   lon: item.geometry?.lng?.toString() || "0",
   type: "location",
   importance: 0.5,
   raw: item,
+  label: item.name || item.formatted.split(',')[0] || "Unknown location",
+  addressInfo: item.formatted,
 });
 
 export async function fetchOpenCageSuggestions(

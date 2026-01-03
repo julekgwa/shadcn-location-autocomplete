@@ -228,8 +228,7 @@ export const normalizeTomTomResult = <T extends TomTomResult>(
   item: T,
 ): LocationSuggestion<T> => ({
   place_id: item.id || Math.random().toString(),
-  display_name:
-    item.poi?.name ||
+  formattedAddress: item.poi?.name ||
     item.address?.freeformAddress ||
     item.address?.streetName ||
     "Unknown location",
@@ -238,6 +237,17 @@ export const normalizeTomTomResult = <T extends TomTomResult>(
   type: item.type || item.poi?.categories?.[0] || item.entityType || "unknown",
   importance: item.score ? item.score / 3 : 0.5, // Normalize TomTom's score to 0-1 range
   raw: item,
+  label: (item.address?.freeformAddress || '').split(',')[0] || item.poi?.name || '',
+  addressInfo: item.address
+    ? [
+        item.address.municipality || item.address.countrySecondarySubdivision,
+        item.address.countrySubdivisionName,
+        item.address.postalCode,
+        item.address.country,
+      ]
+        .filter(Boolean)
+        .join(", ")
+    :  item.poi?.name || '',
 });
 
 export async function fetchTomTomSuggestions(

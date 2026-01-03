@@ -18,7 +18,7 @@ export function ErrorPage({ error }: { error: Error }) {
 
 	return (
 		<div
-			className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-[radial-gradient(circle_at_center,rgba(239,68,68,0.1),transparent_70%)] text-[var(--foreground)]">
+			className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-[radial-gradient(circle_at_center,rgba(239,68,68,0.1),transparent_70%)] text-foreground">
 			<div
 				aria-hidden={true}
 				className="-z-10 absolute inset-0 overflow-hidden"

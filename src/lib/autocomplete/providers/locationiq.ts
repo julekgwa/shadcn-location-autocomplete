@@ -1,8 +1,8 @@
 import type {
-  LocationSuggestion,
-  ProviderConfig,
+	LocationSuggestion,
+	ProviderConfig,
 } from "@/components/ui/location-autocomplete";
-import { buildQueryString, fetcher } from "@/lib/autocomplete/api";
+import {buildQueryString, fetcher} from "@/lib/autocomplete/api";
 
 const BASE_URL = "https://us1.locationiq.com/v1/search.php";
 
@@ -10,109 +10,124 @@ const BASE_URL = "https://us1.locationiq.com/v1/search.php";
  * Query options for the LocationIQ Autocomplete API.
  */
 export interface LocationIQQueryOptions {
-  /**
-   * Maximum number of results to return.
-   * Optional. Default: 10. Allowed range: 1–20.
-   */
-  limit?: number;
+	/**
+	 * Maximum number of results to return.
+	 * Optional. Default: 10. Allowed range: 1–20.
+	 */
+	limit?: number;
 
-  /**
-   * Limit search to specific countries.
-   * Optional. Comma-separated list of ISO 3166-1 alpha-2 country codes (uppercase).
-   * Example: "US,CA,GB"
-   */
-  countrycodes?: string;
+	/**
+	 * Limit search to specific countries.
+	 * Optional. Comma-separated list of ISO 3166-1 alpha-2 country codes (uppercase).
+	 * Example: "US,CA,GB"
+	 */
+	countrycodes?: string;
 
-  /**
-   * Normalize the city field if missing in the response.
-   * 0 = disable (default), 1 = enable normalization.
-   * If enabled, the next available element in the following order will be used as the city:
-   * city_district, locality, town, borough, municipality, village, hamlet, quarter, neighbourhood
-   */
-  normalizecity?: 0 | 1;
+	/**
+	 * Normalize the city field if missing in the response.
+	 * 0 = disable (default), 1 = enable normalization.
+	 * If enabled, the next available element in the following order will be used as the city:
+	 * city_district, locality, town, borough, municipality, village, hamlet, quarter, neighbourhood
+	 */
+	normalizecity?: 0 | 1;
 
-  /**
-   * Preferred language for the search results.
-   * Optional. Default: 'en'.
-   * Only a single 2-character ISO 639-1 language code is supported.
-   * Supported: "en", "cs", "nl", "fr", "de", "id", "it", "no", "pl", "es", "ru", "sv", "uk"
-   */
-  "accept-language"?: string;
+	/**
+	 * Preferred language for the search results.
+	 * Optional. Default: 'en'.
+	 * Only a single 2-character ISO 639-1 language code is supported.
+	 * Supported: "en", "cs", "nl", "fr", "de", "id", "it", "no", "pl", "es", "ru", "sv", "uk"
+	 */
+	"accept-language"?: string;
 }
 
 // LocationIQ Search API types
 export type LocationIQResponse = LocationIQSearchResult[];
 
 export interface LocationIQSearchResult {
-  place_id: string; // e.g., "322169966452"
-  osm_id?: string; // e.g., "25503669"
-  osm_type?: "node" | "way" | "relation" | string;
-  licence?: string; // attribution URL
-  lat: string; // stringified latitude
-  lon: string; // stringified longitude
-  boundingbox?: [string, string, string, string]; // [south, north, west, east]
-  class?: string; // e.g., 'place', 'amenity', 'leisure', 'tourism'
-  type?: string; // e.g., 'city', 'university', 'garden'
-  display_name: string;
-  display_place?: string;
-  display_address?: string;
-  address?: LocationIQAddress;
+	place_id: string; // e.g., "322169966452"
+	osm_id?: string; // e.g., "25503669"
+	osm_type?: "node" | "way" | "relation" | string;
+	licence?: string; // attribution URL
+	lat: string; // stringified latitude
+	lon: string; // stringified longitude
+	boundingbox?: [string, string, string, string]; // [south, north, west, east]
+	class?: string; // e.g., 'place', 'amenity', 'leisure', 'tourism'
+	type?: string; // e.g., 'city', 'university', 'garden'
+	display_name: string;
+	display_place?: string;
+	display_address?: string;
+	address?: LocationIQAddress;
 }
 
 export interface LocationIQAddress {
-  name?: string;
-  house_number?: string;
-  road?: string;
-  neighbourhood?: string;
-  suburb?: string;
-  city?: string;
-  town?: string;
-  village?: string;
-  county?: string;
-  state?: string;
-  state_district?: string;
-  postcode?: string;
-  country?: string;
-  country_code?: string; // ISO 3166-1 alpha-2 (e.g., 'za')
+	name?: string;
+	house_number?: string;
+	road?: string;
+	neighbourhood?: string;
+	suburb?: string;
+	city?: string;
+	town?: string;
+	village?: string;
+	county?: string;
+	state?: string;
+	state_district?: string;
+	postcode?: string;
+	country?: string;
+	country_code?: string; // ISO 3166-1 alpha-2 (e.g., 'za')
 }
 
 export const normalizeLocationIQResult = <T extends LocationIQSearchResult>(
-  item: T,
-): LocationSuggestion<T> => ({
-  place_id:
-    item.place_id || item.osm_id?.toString() || Math.random().toString(),
-  display_name: item.display_name || "Unknown location",
-  lat: item.lat || "0",
-  lon: item.lon || "0",
-  type: item.type || item.class || "unknown",
-  importance: 0.5,
-  raw: item,
-});
+	item: T,
+): LocationSuggestion<T> => {
+	const label = item.display_place || item.display_name.split(',')[0] || '';
+	return {
+		place_id: item.place_id || item.osm_id?.toString() || Math.random().toString(),
+		formattedAddress: item.display_name || "Unknown location",
+		lat: item.lat || "0",
+		lon: item.lon || "0",
+		type: item.type || item.class || "unknown",
+		importance: 0.5,
+		raw: item,
+		label: label,
+		addressInfo: item.address
+			? [
+				item.address.neighbourhood,
+				item.address.suburb,
+				item.address.city || item.address.town || item.address.village,
+				item.address.postcode,
+				item.address.state,
+				item.address.country,
+			]
+				.filter(Boolean)
+				.join(", ")
+			: item.display_name,
+	}
+};
 
 export async function fetchLocationIQSuggestions(
-  query: string,
-  config: ProviderConfig,
-  options?: LocationIQQueryOptions,
+	query: string,
+	config: ProviderConfig,
+	options?: LocationIQQueryOptions,
 ): Promise<LocationSuggestion<LocationIQSearchResult>[]> {
-  const apiKey = config.apiKey;
-  if (!apiKey) {
-    throw new Error("LocationIQ requires an API key in config.apiKey");
-  }
+	const apiKey = config.apiKey;
+	if (!apiKey) {
+		throw new Error("LocationIQ requires an API key in config.apiKey");
+	}
 
-  const params = buildQueryString({
-    ...(options || {}),
-    key: config.apiKey,
-    q: query,
-    format: "json",
-  });
+	const params = buildQueryString({
+		...(options || {}),
+		key: config.apiKey,
+		q: query,
+		format: "json",
+	});
 
-  const url = `${config.baseUrl || BASE_URL}?${params}`;
+	const url = `${config.baseUrl || BASE_URL}?${params}`;
 
-  const headers: Record<string, string> = {
-    "Content-Type": "application/json",
-  };
+	const headers: Record<string, string> = {
+		"Content-Type": "application/json",
+	};
 
-  return fetcher<LocationIQResponse>(url, {
-    headers,
-  }).then(({ response }) => response.map(normalizeLocationIQResult));
+	return fetcher<LocationIQResponse>(url, {
+		headers,
+	}).then(({response}) => response.map(normalizeLocationIQResult));
 }
