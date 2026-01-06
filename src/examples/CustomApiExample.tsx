@@ -147,7 +147,7 @@ async function getSuggestions(
 }
 
 export function CustomApiExample() {
-	const [value, setValue] = React.useState<string>()
+	const [value, setValue] = React.useState<string>('')
 
 	return (
 		<LocationAutocomplete

@@ -4,19 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="46ea2f3b-f925-4bdd-b1ba-3d564aa17459" name="Changes" comment="feat: implement error and not found pages with enhanced UI components">
+    <list default="true" id="46ea2f3b-f925-4bdd-b1ba-3d564aa17459" name="Changes" comment="feat: standardize formatting and improve code readability in location autocomplete components">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/error-page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/error-page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/not-found.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/not-found.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ui/command.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/command.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/ui/location-autocomplete.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/location-autocomplete.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/autocomplete/providers/geoapify.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/autocomplete/providers/geoapify.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/autocomplete/providers/google.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/autocomplete/providers/google.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/autocomplete/providers/here.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/autocomplete/providers/here.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/autocomplete/providers/locationiq.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/autocomplete/providers/locationiq.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/autocomplete/providers/mapbox.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/autocomplete/providers/mapbox.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/autocomplete/providers/opencage.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/autocomplete/providers/opencage.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/autocomplete/providers/openstreetmap.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/autocomplete/providers/openstreetmap.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/autocomplete/providers/tomtom.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/autocomplete/providers/tomtom.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/examples/CustomApiExample.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/examples/CustomApiExample.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,18 +25,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "julekgwa"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;julekgwa&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/julekgwa/shadcn-location-autocomplete.git",
-    "accountId": "32a7d93b-e240-44a3-976d-72be7905909b"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/julekgwa/shadcn-location-autocomplete.git&quot;,
+    &quot;accountId&quot;: &quot;32a7d93b-e240-44a3-976d-72be7905909b&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
 }</component>
@@ -104,7 +96,9 @@
       <workItem from="1767287766569" duration="9020000" />
       <workItem from="1767298552861" duration="24000" />
       <workItem from="1767337874255" duration="33470000" />
-      <workItem from="1767460530772" duration="11532000" />
+      <workItem from="1767460530772" duration="11724000" />
+      <workItem from="1767600058266" duration="2418000" />
+      <workItem from="1767641424069" duration="1218000" />
     </task>
     <task id="LOCAL-00001" summary="refactor: standardize import statements and improve code formatting">
       <option name="closed" value="true" />
@@ -154,7 +148,15 @@
       <option name="project" value="LOCAL" />
       <updated>1767368229383</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="feat: standardize formatting and improve code readability in location autocomplete components">
+      <option name="closed" value="true" />
+      <created>1767481572195</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1767481572196</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -167,7 +169,8 @@
     <MESSAGE value="feat: add Microsoft Clarity tracking script for enhanced user analytics" />
     <MESSAGE value="feat: refactor head management in routing components for improved SEO and analytics" />
     <MESSAGE value="feat: implement error and not found pages with enhanced UI components" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: implement error and not found pages with enhanced UI components" />
+    <MESSAGE value="feat: standardize formatting and improve code readability in location autocomplete components" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: standardize formatting and improve code readability in location autocomplete components" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>
